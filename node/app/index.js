@@ -6,11 +6,6 @@ const Task = require('./Task');
 const Project = require('./Project');
 
 const creds = require('./creds');
-// {
-//   privateKey: 'pk_GBDHRAVJJEEQ8Q3JSZKY3C2QHQ1NELWE',
-//   teamID: '55958',
-//   spaceID: '61186'
-// };
 
 var app = express();
 app.use(bodyParser.json());
@@ -26,7 +21,6 @@ app.get('/', (req, res) => {
  * Get Projects.
  */
 app.get('/projects', (req, res) => {
-  //'https://api.clickup.com/api/v1/space/61186/project');
   getProjects(creds.spaceID)
     .then((d) => {
       let projects = d.data.projects.map((x) => new Project(x));
